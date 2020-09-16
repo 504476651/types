@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+
+        // Prmise解决了啥问题?
+        //    1:promise解决了异步编程的规范问题.(解决了回调地狱的问题).
+        //        (以前的异步操作,有些是回调函数,有些是事件,事件名不固定,有些叫success,有些叫load,有些叫onreadystatechange)    
+        //        有了promise之后,promise可以封装任何的异步操作,异步监听统一通过then触发.
+        //    2:promise解决了信任的问题.
+        //        以前的异步编程,因为没有规范,因此缺乏一个可以信赖的标准,产生了一些不安全的隐患.
+        //        有一些第三方的异步编程插件,不一定按照我们希望的预期去运行.例如异步监听的回调触发了多次.
+        //        Promise的3个状态一旦改变就不会再改变.因此可以保证resolve只触发一次.
+
+        // promise一旦运行,则出于pending(等待)状态,
+        //  resolve函数调用,则promise切换到resolve状态,不再改变.
+        //  reject函数调用,则promise切换到reject状态,不再改变.
+
+        // Promise的回调是同步的
+        let p = new Promise(function(resolve,reject){
+            reject();
+            resolve();
+        })
+
+        let x = 0;
+
+        // then和catch的回调是异步的.
+        p.then(function(){
+            x = 10;
+        }).catch(function(){
+            x = 20;
+        })
+
+        console.log(x);//0;
+
+    </script>
+
+</body>
+</html>

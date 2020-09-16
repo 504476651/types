@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+
+        // 本地存储可以在登录成功后存储账号，再次登录时默认显示。
+        // 本地存储之前怎么做类似工作？ -> cookie
+
+        let num = 100;
+
+        // 存储一个data的数据，值是num。临时数据
+        // document.cookie = 'data='+num;
+        // localStorage.setItem('data',num);
+
+        // 设置一个有过期时间的cookie
+        // 设置过期时间需要设置expires属性。然后转换成UTCstring
+        document.cookie = `data=${num}; expires=${new Date('2020-07-03').toUTCString()}`;
+
+        // 存储另一个数据
+        document.cookie = `username=mimi; expires=${new Date('2020-07-03').toUTCString()}`;
+
+        // cookie的删除就是通过把过期时间设置为过去时间，通过这个操作删除cookie数据。
+        // 查？只能获取所有cookie，然后进行筛选。
+
+        // 增，删，改，查
+
+    </script>
+
+</body>
+</html>

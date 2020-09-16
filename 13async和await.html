@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+
+        function getP(){
+            return new Promise(function(resolve){
+                resolve(1000)
+            })
+        }
+
+        async function fn(){
+            // await 后面的getP返回的是promise里面resolve的实参.
+            let x = await getP();
+            console.log(x);
+            return x
+        }
+
+        // async函数默认返回一个promise对象.
+        let num = fn();
+
+        // 只能通过then接受async函数return的值.
+        num.then(function(res){
+            console.log(res);
+        })
+
+        // 用async和await改写3个请求嵌套.
+
+    </script>
+
+</body>
+</html>

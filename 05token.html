@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+
+        // token是什么? -> token就是一串字符串.'79faf82271944fe38c4f1d99be71bc9c'
+        // token用于用户验证.
+        // 用户验证是什么?
+
+        // http协议是一种无状态的协议.
+        //  无状态就是无记忆.
+        //  客户端和服务端断开通信后相互没有记忆(不记得之前通信过).
+        //  如果1秒后再进行通信,就是全新的通信.
+
+        //  用户登录成功后,刷新网页,进行了另一次通信,服务器是如何知道这个网页是之前登录成功过的网页?
+        //  因此网页每次请求服务器都应该携带一个用户凭证,这个凭证就是token字符串
+        //  服务器进行用户验证,都是验证token字符串是不是有记录的.
+
+        //  每次ajax请求数据,又如何发送token给后端进行用户验证?
+        //  在请求头里发送token.属性名一般是Authorization:token字符串.....
+
+        //  登录成功之后,刷新网页,还需要登录吗?
+        //  不需要,那如何知道之前登录成功过?
+        //  如果需要再次请求服务器,哪里获取token?
+
+        //  把token存到cookie内或者本地存储内.
+        //  刷新时判断cookie内或者本地存储内,有没有token,有token就是登录成功过.(token是不是过期了)
+        //  token过期是啥意思? token的登录状态只能持续一定时间,时间过了就得更新token.
+
+    </script>
+
+</body>
+</html>

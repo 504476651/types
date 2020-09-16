@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>    
+
+        // setTimeout(function(){
+        //     console.log('p1')
+        //     setTimeout(function(){
+        //         console.log('p2')
+        //         setTimeout(function(){
+        //             console.log('p3')
+        //         },2000)
+        //     },2000)
+        // },2000)
+        
+        // 封装获取一个promise实例.
+        function getP(t){
+            return new Promise(function(resolve,reject){
+                setTimeout(function(){
+                    resolve()
+                },t)
+            })
+        }
+
+        // 按顺序执行3个异步操作.(连续三个then)
+        getP(2000)
+        .then(function(){
+            console.log('p1');
+            return getP(3000);
+        })
+        .then(function(){
+            console.log('p2');
+            return getP(4000);
+        })
+        .then(function(){
+            console.log('p3');
+        })
+
+        // ------------------------------------------------------------------        
+        // let p1 = new Promise(function(resolve,reject){
+        //     setTimeout(function(){
+        //         resolve()
+        //     },2000)
+        // })
+
+        // let p2 = new Promise(function(resolve,reject){
+        //     setTimeout(function(){
+        //         resolve()
+        //     },3000)
+        // })
+
+        // let p3 = new Promise(function(resolve,reject){
+        //     setTimeout(function(){
+        //         resolve()
+        //     },4000)
+        // })
+
+        // 按顺序执行3个异步操作.(连续三个then)
+        // p1.then(function(){
+        //     console.log('p1');
+        //     return p2
+        // }).then(function(){
+        //     console.log('p2');
+        //     return p3
+        // }).then(function(){
+        //     console.log('p3');
+        // })
+        
+
+
+
+
+    </script>
+
+</body>
+</html>

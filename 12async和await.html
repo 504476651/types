@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+
+        function getP(t,str){
+           return new Promise(function(resolve){
+                setTimeout(function(){
+                    console.log(str)
+                    resolve();
+                },t)
+           })
+        }
+
+        // async -> 声明函数携带async关键字,则表示函数内有可能有异步操作.
+        // await后面如果有promise操作,则这个promise没有resolve前,后面的代码都不会执行
+
+        async function fn(){
+            await getP(2000,'p1');
+            await getP(3000,'p2');
+            await getP(4000,'p3');
+            console.log(100);
+        }
+       
+        fn();
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>    
+
+        // ajax请求数据的3种状态:
+        //     等待相应中...
+        //     请求成功了,
+        //     请求失败了.
+
+        // Promise的实例就是一个异步操作,总会有3个状态
+        //     1:resolve.(异步成功了)
+        //     2:reject.(异步失败了)
+        //     3:pending.(等待中...)
+
+        // 实例的then方法的回调函数就是resolve.
+        // 实例的catch方法的回调函数就是reject.
+
+        // then默认返回当前的Promise实例.
+        // then也可以指定返回某个Promise的实例.
+
+        // setTimeout(function(){
+        //     console.log(1000)
+        // },1000)
+
+        // Promise封装定时器.
+        // let p1 = new Promise(function(resolve,reject){
+        //     setTimeout(function(){
+        //         resolve()
+        //     },2000)
+        // })
+
+        // then的回调函数就是Promise的回调函数的形参resolve.
+        // p1.then(function(){
+        //     console.log(1000)
+        // })
+        
+        // 用promise封装ajax请求
+        let p2 = new Promise(function(resolve,reject){
+            let xhr2 = new XMLHttpRequest();
+            xhr2.open('GET','php/1.get11.php');
+            xhr2.send();
+            xhr2.onreadystatechange = function(){
+                if(xhr2.readyState == 4){
+                    if(xhr2.status == 200){
+                        resolve(xhr2.responseText);
+                    }else{
+                        reject(xhr2.status);
+                    }
+                }
+            }
+        })
+
+        p2.then(function(res){
+            console.log('then',res)
+        }).catch(function(err){
+            console.log('catch',err)
+        })
+
+
+
+
+    </script>
+
+</body>
+</html>

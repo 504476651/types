@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+
+    //ajax请求,请求1的结果,作为请求2的参数,请求2的结果作为请求3的参数........
+
+    function getP(url,params){
+        return new Promise(function(resolve,reject){
+            let xhr = new XMLHttpRequest();
+            xhr.open('get',url+'?'+ params);
+            xhr.send();
+            xhr.onreadystatechange = function(){
+                if(xhr2.readyState == 4){
+                    if(xhr2.status == 200){
+                        resolve(xhr.responseText);
+                    }
+                }
+            }
+        })
+    }
+
+    getP('url')
+    .then(function(res){
+        // 第一次请求的结果用于第二次请求的参数
+        return getP('url2',res)
+    })
+    .then(function(res){
+        // 第二次请求的结果用于第三次请求的参数
+        return getP('url3',res)
+    })
+    .then(function(res){
+        // 第三次请求的结果用于渲染视图
+        renderView(res);
+    })
+
+
+
+
+</script>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <!-- 
+        action -> 地址
+        method -> 请求方式
+        input用于发送参数，value是参数值，name是参数名
+        如果需要发送多个参数，又不需要用户输入，则应该使用hidden表单
+        点击submit按钮，系统会自动发起请求了。
+        请求成功之后会自动发生跳转。 
+    -->
+
+    <!-- 现在用于登录注册这些功能 -->
+
+    <form action="php/1.get.php" method="GET">
+        <input type="text" placeholder="username" name='username'>
+        <input type="text" placeholder="age" name='age'>
+        <input type='hidden' name='num' value='100' />
+        <input type='submit' value='提交' />
+    </form>
+    
+    <script>
+        // 2005之后出现的ajax
+        // 2005之前使用form表单
+
+        // form表单提交数据是同步的，会默认刷新整个网页。默认有跳转。
+
+    </script>
+
+</body>
+</html>

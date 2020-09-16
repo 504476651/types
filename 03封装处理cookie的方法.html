@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+
+        // 新增data数据
+        setCookie('data',100,10);
+
+        // 修改data数据
+        setCookie('data',200,100);
+
+        // 删除username数据
+        removeCookie('usernanme');
+
+        // 获取data数据。
+        let res = getCookie('data');
+
+        // 新增cookie的函数封装.
+        function setCookie(key,val,day){
+            // 当前时间
+            let d = new Date();
+            // 获取当前时间的毫秒数
+            let t = d.getTime();
+            // 设置时间到10天之后。
+            d.setTime(t + day * 24*60*60*1000);
+            // 根据这个过期时间设置cookie数据
+            document.cookie = `${key}=${val}; expires=${d.toUTCString()}`;
+        }
+
+        // 删除数据。
+        function removeCookie(key){
+            setCookie(key,null,-1)
+        }
+
+        // 封装一个获取cookie的的函数.
+        function getCookie(key){
+            let arr = document.cookie.split('; ');
+            // 在arr内查找key所在的元素下标。
+            let index = arr.findIndex((item,i)=>{
+                return item.search(key) != -1
+            })
+            // 返回查找的数据.
+            return arr[index].split('=')[1]
+        }
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+
+<script>
+
+    // 本地存储和cookie有啥区别.
+    //  1:cookie会默认发送给后端.本地存储不会.
+    //  2:cookie的大小只有4000字节左右.本地存储有5M.
+    //  3:cookie有过期时间,本地存储没有.(本地存储如何设置过期时间).
+
+    // 什么时候用cookie什么时候用本地存储?
+
+    // 相同点:
+    //    1:都可以存储数据到浏览器,都是存储字符串
+    //    2:同源页面可以共享存储的数据.(跨浏览器不共享)
+
+    localStorage.setItem('mydata','共享数据都可以拿');
+
+    let xhr = new XMLHttpRequest();
+
+    xhr.open('GET','php/1.get.php');
+    xhr.send();
+
+    xhr.onreadystatechange = function(){
+        if(xhr.readyState == 4){
+            if(xhr.status == 200){
+                console.log(xhr.response);
+            }
+        }
+    }
+
+</script>
+
+</html>

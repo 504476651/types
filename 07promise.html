@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+
+        // Promise是一个类.构造函数.
+        // Promise 异步编程解决方案.用于封装异步操作的.
+
+        // asncy和await是js终极的异步解决方案.
+
+        // 不用Promise,现在的异步编程都是通过一个回调函数(事件)来监听异步的完成.
+        // 多个异步嵌套,就会产生回调地狱的问题.
+
+        // 异步编程的解决思路 -> 把异步操作写出同步代码.
+
+        // 从上往下的顺序执行异步(类似于同步代码).
+        // let res1 = axios.get('url1');
+        // let res2 = axios.get('url2?'+res1);
+        // let res3 = axios.get('url3?'+res2);
+
+        // (回调地狱)
+        // ajax请求,请求1的结果,作为请求2的参数,请求2的结果作为请求3的参数........
+        // let xhr = new XMLHttpRequest();
+        // xhr.open('get','url1');
+        // xhr.send();
+        // xhr.onreadystatechange = function(){
+        //     if(xhr.readyState == 4){
+        //         if(xhr.status == 200){
+        //             let xhr1 = new XMLHttpRequest();
+        //             xhr1.open('get','url2?'+xhr.responseText);
+        //             xhr1.send();
+        //             xhr1.onreadystatechange = function(){
+        //                 if(xhr1.readyState == 4){
+        //                     if(xhr1.status == 200){
+        //                         let xhr2 = new XMLHttpRequest();
+        //                         xhr2.open('get','url3?'+xhr1.responseText);
+        //                         xhr2.send();
+        //                         xhr2.onreadystatechange = function(){
+        //                             if(xhr2.readyState == 4){
+        //                                 if(xhr2.status == 200){
+        //                                     console.log(xhr2.responseText)
+        //                                 }
+        //                             }
+        //                         }
+        //                     }
+        //                 }
+        //             }
+        //         }
+        //     }
+        // }
+        
+        // (回调地狱)
+        // 10定时器嵌套.定时器1时间到了,开启定时器2,定时器2的时间到了,开启定时器3.......
+        // setTimeout(function(){
+        //     setTimeout(function(){
+        //         setTimeout(function(){
+        //             setTimeout(function(){
+        //                 console.log(1000)
+        //             },1000)
+        //         },1000)
+        //     },1000)
+        // },1000)
+
+        // 定时器异步操作通过回调函数监听时间结束
+        // setTimeout(function(){
+        //     console.log(1000)
+        // },1000)
+
+        // fileReader通过onload事件监听数据读取完成.
+        // let fd = new FileReader();
+        // fd.readyAsDataURL();
+        // fd.onload = function(){}
+
+        // ajax请求通过onreadystatechange事件监听请求数据完成.
+
+    </script>
+
+</body>
+</html>

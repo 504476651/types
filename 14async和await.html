@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+
+        // let x = 100;
+
+        // function getP(){
+        //     return new Promise(function(resolve){
+        //         setTimeout(function(){
+        //             resolve()
+        //         },0)
+        //     })
+        // }
+
+        // // await会把await后面的代码变成异步.
+        // async function fn(){
+        //     await getP();
+        //     x = 200;
+        // }
+        // fn();
+        // console.log(x);// 100
+
+        // --------------------------------------------------------------------
+        
+        // let x = 10;
+
+        // async function fn(){
+        //     await一定会把后面的代码变成异步.
+        //     await console.log(x);//10
+
+        //     await后面没有promise,则console不会等待定时器完成就打印了.
+        //     await setTimeout(function(){
+        //         x = 20
+        //     },1000);
+        //     console.log('定时器后面的x',x);
+        // }
+        // fn();
+        // console.log('x',x);
+        
+        // --------------------------------------------------------------
+        // let x = 10;
+        // async function fn(){
+        //     await (x = 20); // -> 先x = 20.然后再await
+        //     console.log('await后面的x',x);
+        // }
+        // fn();
+        // console.log('全局的x',x);
+        
+        // ----------------------------------------------------------------------
+        let x = 10;
+        async function fn(){
+
+            x = await 20;
+
+            // 以上代码相当于下面的过程.这样 x=y 就变成了异步.发生在全局的打印后面.
+            // let y = await 20;
+            // x = y;
+            console.log('await后面的x',x);//20
+        }
+        fn();
+        console.log('全局的x',x);//10
+
+
+    </script>
+
+</body>
+</html>

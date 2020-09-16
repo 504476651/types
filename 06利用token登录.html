@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <input type="text" value="" placeholder="token">
+    <input type="button" value='登录'>
+
+    <script src="js/axios.js"></script>
+    <script>
+
+        let aInput = document.querySelectorAll('input');
+
+        axios.defaults.baseURL = 'https://api.github.com/';
+        // axios.defaults.headers.common['Authorization'] = 'token '+ localStorage.getItem('token');
+
+        aInput[1].addEventListener('click',function(){
+            axios({
+                url:'user/repos',
+                method:'GET',
+                headers:{'Authorization':'token '+aInput[0].value}
+            }).then(function(res){
+                localStorage.setItem('token',aInput[0].value);
+                console.log(res.data);
+            })
+        })
+
+        // aInput[1].addEventListener('click',function(){
+        //     axios({
+        //         url:'users/DanmAamzing',
+        //         method:'GET',
+        //      headers:{'Authorization':'token '+aInput[0].value}
+        //     }).then(function(res){
+        //         localStorage.setItem('token',aInput[0].value);
+        //         console.log(res.data);
+        //     })
+        // })
+
+    </script>
+
+</body>
+</html>
